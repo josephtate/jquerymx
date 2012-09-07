@@ -139,7 +139,7 @@ steal('jquery/class', 'jquery/lang/string', function() {
 				promise = deferred.promise();
 
 			// pass the old data to delete
-			if (type !== 'delete') {
+			if (type == 'destroy') {
 				//Put the attrs at the end
 				args.push(args.shift());
 			}
