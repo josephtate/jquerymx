@@ -49,8 +49,12 @@ steal('jquery/class', 'jquery/lang/string', function() {
 			// get the url with any templated values filled out
 			ajaxOb.url = $String.sub(ajaxOb.url, ajaxOb.data, true);
 
+			ajaxOb.type = ajaxOb.type || type || 'post';
+			if (ajaxOb.type.toLowerCase() === 'get') {
+				ajaxOb.data.cachebuster = Math.floor(Math.random()*10000000000);
+			}
+
 			return $.ajax(extend({
-				type: type || "post",
 				dataType: dataType ||"json",
 				fixture: fixture,
 				success : success,
